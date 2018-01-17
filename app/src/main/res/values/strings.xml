@@ -1,25 +1,25 @@
 <resources>
     <string name="app_name">KotlinAcademy</string>
 
-    <string-array name="android_name">
-        <item>Android 3.0 Honeycomb</item>
-        <item>Android 4.0 Ice Cream Sandwich</item>
-        <item>Android 4.1 Jelly Bean</item>
-        <item>Android 4.4 Kitkat</item>
-        <item>Android 5.0 Lollipop</item>
-        <item>Android 6.0 Marshmallow</item>
-        <item>Android 7.0 Nougat</item>
-        <item>Android 8.0 Oreo</item>
+    <string-array name="club_name">
+        <item>Barcelona FC</item>
+        <item>Real Madrid FC</item>
+        <item>Bayern Munchen FC</item>
+        <item>Manchester City FC</item>
+        <item>Manchester United FC</item>
+        <item>Chelsea FC</item>
+        <item>AC Milan FC</item>
+        <item>Arsenal FC</item>
     </string-array>
 
-    <array name="android_image">
-        <item>@drawable/img_honeycomb</item>
-        <item>@drawable/img_ics</item>
-        <item>@drawable/img_jelly</item>
-        <item>@drawable/img_kitkat</item>
-        <item>@drawable/img_lollipop</item>
-        <item>@drawable/img_marshmallow</item>
-        <item>@drawable/img_nougat</item>
-        <item>@drawable/img_oreo</item>
+    <array name="club_image">
+        <item>@drawable/img_barca</item>
+        <item>@drawable/img_madrid</item>
+        <item>@drawable/img_bayern</item>
+        <item>@drawable/img_city</item>
+        <item>@drawable/img_mu</item>
+        <item>@drawable/img_chelsea</item>
+        <item>@drawable/img_acm</item>
+        <item>@drawable/img_arsenal</item>
     </array>
 </resources>

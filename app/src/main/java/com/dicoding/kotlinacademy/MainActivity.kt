@@ -3,8 +3,7 @@ package com.dicoding.kotlinacademy
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import com.dicoding.kotlinacademy.R.array.android_image
-import com.dicoding.kotlinacademy.R.array.android_name
+import com.dicoding.kotlinacademy.R.array.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -21,8 +20,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initData(){
-        val name = resources.getStringArray(android_name)
-        val image = resources.obtainTypedArray(android_image)
+        val name = resources.getStringArray(club_name)
+        val image = resources.obtainTypedArray(club_image)
         items.clear()
         for (i in name.indices) {
             items.add(Item(name[i],

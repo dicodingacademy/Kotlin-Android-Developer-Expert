@@ -3,7 +3,9 @@ package com.dicoding.kotlinacademy
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import com.dicoding.kotlinacademy.R.array.android_image
+import com.dicoding.kotlinacademy.R.array.android_name
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,17 +14,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val list = findViewById<RecyclerView>(R.id.list)
         initData()
 
         list.layoutManager = LinearLayoutManager(this)
         list.adapter = RecylerViewAdapter(this, items)
     }
 
-    fun initData(){
-        val name = resources.getStringArray(R.array.android_name)
-        val image = resources.obtainTypedArray(R.array.android_image)
+    private fun initData(){
+        val name = resources.getStringArray(android_name)
+        val image = resources.obtainTypedArray(android_image)
         items.clear()
         for (i in name.indices) {
             items.add(Item(name[i],

@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun initData(){
-        val name = resources.getStringArray(R.array.android_name)
-        val image = resources.obtainTypedArray(R.array.android_image)
+        val name = resources.getStringArray(R.array.club_name)
+        val image = resources.obtainTypedArray(R.array.club_image)
         items.clear()
         for (i in name.indices) {
             items.add(Item(name[i],

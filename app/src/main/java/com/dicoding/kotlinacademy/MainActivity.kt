@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val list = findViewById<RecyclerView>(R.id.list)
+        val list = findViewById<RecyclerView>(R.id.club_list)
         initData()
 
         list.layoutManager = LinearLayoutManager(this)

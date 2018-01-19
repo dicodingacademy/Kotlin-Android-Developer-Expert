@@ -1,25 +1,3 @@
 <resources>
     <string name="app_name">KotlinAcademy</string>
-
-    <string-array name="club_name">
-        <item>Barcelona FC</item>
-        <item>Real Madrid FC</item>
-        <item>Bayern Munchen FC</item>
-        <item>Manchester City FC</item>
-        <item>Manchester United FC</item>
-        <item>Chelsea FC</item>
-        <item>AC Milan FC</item>
-        <item>Arsenal FC</item>
-    </string-array>
-
-    <array name="club_image">
-        <item>@drawable/img_barca</item>
-        <item>@drawable/img_madrid</item>
-        <item>@drawable/img_bayern</item>
-        <item>@drawable/img_city</item>
-        <item>@drawable/img_mu</item>
-        <item>@drawable/img_chelsea</item>
-        <item>@drawable/img_acm</item>
-        <item>@drawable/img_arsenal</item>
-    </array>
 </resources>

@@ -1,4 +1,4 @@
-package com.dicoding.kotlinacademy.teams
+package com.dicoding.kotlinacademy.main
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -10,12 +10,11 @@ import com.dicoding.kotlinacademy.R
 import com.dicoding.kotlinacademy.model.Team
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
-import org.jetbrains.anko.sdk25.coroutines.onClick
 
 /**
  * Created by root on 1/16/18.
  */
-class TeamsAdapter(private val teams: List<Team>, private val listener: (Team) -> Unit)
+class TeamsAdapter(private val teams: List<Team>)
     : RecyclerView.Adapter<TeamViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder? {
@@ -23,7 +22,7 @@ class TeamsAdapter(private val teams: List<Team>, private val listener: (Team) -
     }
 
     override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {
-        holder.bindItem(teams[position], listener)
+        holder.bindItem(teams[position])
     }
 
     override fun getItemCount(): Int = teams.size
@@ -63,9 +62,8 @@ class TeamViewHolder(view: View) : RecyclerView.ViewHolder(view){
     private val teamBadge: ImageView = view.find(R.id.team_badge)
     private val teamName: TextView = view.find(R.id.team_name)
 
-    fun bindItem(teams: Team, listener: (Team) -> Unit) {
+    fun bindItem(teams: Team) {
         Picasso.with(itemView.context).load("http://"+teams.teamBadge).into(teamBadge)
         teamName.text = teams.teamName
-        itemView.onClick { listener(teams) }
     }
 }

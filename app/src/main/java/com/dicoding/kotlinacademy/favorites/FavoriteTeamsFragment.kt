@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.dicoding.kotlinacademy.R
 import com.dicoding.kotlinacademy.db.Favorite
 import com.dicoding.kotlinacademy.db.database
 import com.dicoding.kotlinacademy.db.parser
+import com.dicoding.kotlinacademy.detail.TeamDetailActivity
 import org.jetbrains.anko.*
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.recyclerview.v7.recyclerView
@@ -22,15 +24,15 @@ import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
 class FavoriteTeamsFragment : Fragment(), AnkoComponent<Context> {
     private var favorites: MutableList<Favorite> = mutableListOf()
-    private lateinit var adapter: FavoriteMatchAdapter
+    private lateinit var adapter: FavoriteTeamsAdapter
     private lateinit var listEvent: RecyclerView
     private lateinit var swipeRefresh: SwipeRefreshLayout
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        adapter = FavoriteMatchAdapter(favorites){
-//            ctx.startActivity<MatchDetailActivity>("id" to "${it.eventId}")
+        adapter = FavoriteTeamsAdapter(favorites){
+            ctx.startActivity<TeamDetailActivity>("id" to "${it.teamId}")
         }
 
         listEvent.adapter = adapter

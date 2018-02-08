@@ -111,7 +111,6 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
     }
 
     override fun showTeamList(data: List<Team>) {
-        Log.e("data", data[0].teamName)
         swipeRefresh.isRefreshing = false
         teams.clear()
         teams.addAll(data)

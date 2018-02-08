@@ -1,23 +1,22 @@
 package com.dicoding.kotlinacademy.favorites
 
-import android.graphics.Typeface
 import android.support.v7.widget.RecyclerView
-import android.text.TextUtils
-import android.view.Gravity
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.dicoding.kotlinacademy.R
 import com.dicoding.kotlinacademy.db.Favorite
+import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
-import org.jetbrains.anko.cardview.v7.cardView
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 /**
  * Created by root on 1/16/18.
  */
-class FavoriteMatchAdapter(private val favorite: List<Favorite>, private val listener: (Favorite) -> Unit)
+class FavoriteTeamsAdapter(private val favorite: List<Favorite>, private val listener: (Favorite) -> Unit)
     : RecyclerView.Adapter<FavoriteViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder? {
@@ -35,7 +34,26 @@ class FavoriteMatchAdapter(private val favorite: List<Favorite>, private val lis
 class EventUI : AnkoComponent<ViewGroup> {
     override fun createView(ui: AnkoContext<ViewGroup>): View {
         return with(ui) {
-          linearLayout()
+          linearLayout{
+              lparams(width = matchParent, height = wrapContent)
+              padding = dip(16)
+              orientation = LinearLayout.HORIZONTAL
+
+              imageView {
+                  id = R.id.team_badge
+              }.lparams{
+                  height = dip(50)
+                  width = dip(50)
+              }
+
+              textView {
+                  id = R.id.team_name
+                  textSize = 16f
+              }.lparams{
+                  margin = dip(15)
+              }
+
+          }
         }
     }
 
@@ -43,9 +61,12 @@ class EventUI : AnkoComponent<ViewGroup> {
 
 class FavoriteViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
+    private val teamBadge: ImageView = view.find(R.id.team_badge)
+    private val teamName: TextView = view.find(R.id.team_name)
 
     fun bindItem(favorite: Favorite, listener: (Favorite) -> Unit) {
-
+        Picasso.with(itemView.context).load("http://"+favorite.teamBadge).into(teamBadge)
+        teamName.text = favorite.teamName
         itemView.onClick { listener(favorite) }
     }
 }

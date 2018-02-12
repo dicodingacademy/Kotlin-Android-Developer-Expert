@@ -14,11 +14,11 @@ import org.jetbrains.anko.*
 /**
  * Created by root on 1/16/18.
  */
-class TeamsAdapter(private val teams: List<Team>)
+class MainAdapter(private val teams: List<Team>)
     : RecyclerView.Adapter<TeamViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder? {
-        return TeamViewHolder(EventUI().createView(AnkoContext.create(parent.context, parent)))
+        return TeamViewHolder(TeamUI().createView(AnkoContext.create(parent.context, parent)))
     }
 
     override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {
@@ -29,7 +29,7 @@ class TeamsAdapter(private val teams: List<Team>)
 
 }
 
-class EventUI : AnkoComponent<ViewGroup> {
+class TeamUI : AnkoComponent<ViewGroup> {
     override fun createView(ui: AnkoContext<ViewGroup>): View {
         return with(ui) {
             linearLayout {

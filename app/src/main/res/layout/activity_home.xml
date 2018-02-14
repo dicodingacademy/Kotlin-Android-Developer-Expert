@@ -30,7 +30,7 @@
             app:itemBackground="@android:color/white"
             app:itemIconTint="@drawable/nav_item_color_state"
             app:itemTextColor="@drawable/nav_item_color_state"
-            app:menu="@menu/bottom_navigation_main" />
+            app:menu="@menu/bottom_navigation_menu" />
 
     </LinearLayout>
 

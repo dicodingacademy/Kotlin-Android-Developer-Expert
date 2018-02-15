@@ -17,7 +17,3 @@ fun View.visible() {
 fun View.invisible() {
     visibility = View.INVISIBLE
 }
-
-fun formatText(text: String?): String?{
-    return text?.replace(";", ";\n")
-}

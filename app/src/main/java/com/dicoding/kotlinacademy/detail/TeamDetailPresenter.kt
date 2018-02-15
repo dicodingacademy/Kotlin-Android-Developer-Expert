@@ -10,7 +10,6 @@ import org.jetbrains.anko.uiThread
 /**
  * Created by root on 2/3/18.
  */
-
 class TeamDetailPresenter(private val view: TeamDetailView,
                           private val apiRepository: ApiRepository,
                           private val gson: Gson) {

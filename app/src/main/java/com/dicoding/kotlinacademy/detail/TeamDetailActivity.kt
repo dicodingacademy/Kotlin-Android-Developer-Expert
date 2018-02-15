@@ -30,18 +30,14 @@ import org.jetbrains.anko.db.select
 import org.jetbrains.anko.design.snackbar
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
-
-
 /**
  * Created by root on 2/3/18.
  */
-
-
 class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
     private lateinit var presenter: TeamDetailPresenter
+    private lateinit var teams: Team
     private lateinit var progressBar: ProgressBar
     private lateinit var swipeRefresh: SwipeRefreshLayout
-    private lateinit var teams: Team
 
     private lateinit var teamBadge: ImageView
     private lateinit var teamName: TextView

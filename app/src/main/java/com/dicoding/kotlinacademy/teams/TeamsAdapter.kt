@@ -64,7 +64,7 @@ class TeamViewHolder(view: View) : RecyclerView.ViewHolder(view){
     private val teamName: TextView = view.find(R.id.team_name)
 
     fun bindItem(teams: Team, listener: (Team) -> Unit) {
-        Picasso.with(itemView.context).load("http://"+teams.teamBadge).into(teamBadge)
+        Picasso.with(itemView.context).load(teams.teamBadge).into(teamBadge)
         teamName.text = teams.teamName
         itemView.onClick { listener(teams) }
     }

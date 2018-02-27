@@ -1,6 +1,7 @@
 package com.dicoding.kotlinacademy.main
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -63,7 +64,7 @@ class TeamViewHolder(view: View) : RecyclerView.ViewHolder(view){
     private val teamName: TextView = view.find(R.id.team_name)
 
     fun bindItem(teams: Team) {
-        Picasso.with(itemView.context).load("http://"+teams.teamBadge).into(teamBadge)
+        Picasso.with(itemView.context).load(teams.teamBadge).into(teamBadge)
         teamName.text = teams.teamName
     }
 }

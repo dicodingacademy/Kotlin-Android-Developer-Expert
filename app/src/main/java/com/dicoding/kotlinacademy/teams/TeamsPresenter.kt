@@ -3,15 +3,14 @@ package com.dicoding.kotlinacademy.teams
 import com.dicoding.kotlinacademy.api.ApiRepository
 import com.dicoding.kotlinacademy.api.TheSportDBApi
 import com.dicoding.kotlinacademy.model.TeamResponse
+import com.dicoding.kotlinacademy.util.CoroutinesContextProvider
 import com.google.gson.Gson
-import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import org.jetbrains.anko.coroutines.experimental.bg
-import kotlin.coroutines.experimental.CoroutineContext
 
 class TeamsPresenter(private val view: TeamsView,
                      private val apiRepository: ApiRepository,
-                     private val gson: Gson, private val contextPool: CoroutineContextProvider = CoroutineContextProvider()) {
+                     private val gson: Gson, private val contextPool: CoroutinesContextProvider = CoroutinesContextProvider()) {
 
     fun getTeamList(league: String?) {
         view.showLoading()
@@ -28,8 +27,4 @@ class TeamsPresenter(private val view: TeamsView,
         }
     }
 
-}
-
-open class CoroutineContextProvider {
-    open val main: CoroutineContext by lazy { UI }
 }

@@ -1,4 +1,4 @@
-package com.dicoding.kotlinacademy.teams
+package com.dicoding.kotlinacademy.detail
 
 import com.dicoding.kotlinacademy.TestContextProvider
 import com.dicoding.kotlinacademy.api.ApiRepository
@@ -10,16 +10,15 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 
 /**
- * Created by root on 2/28/18.
+ * Created by root on 3/1/18.
  */
-class TeamsPresenterTest {
+class TeamDetailPresenterTest {
     @Mock
     private
-    lateinit var view: TeamsView
+    lateinit var view: TeamDetailView
 
     @Mock
     private
@@ -29,29 +28,29 @@ class TeamsPresenterTest {
     private
     lateinit var apiRepository: ApiRepository
 
-    private lateinit var presenter: TeamsPresenter
+    private lateinit var presenter: TeamDetailPresenter
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        presenter = TeamsPresenter(view, apiRepository, gson, TestContextProvider())
+        presenter = TeamDetailPresenter(view, apiRepository, gson, TestContextProvider())
     }
 
     @Test
-    fun testGetTeamList() {
+    fun testGetTeamDetail() {
         val teams: MutableList<Team> = mutableListOf()
         val response = TeamResponse(teams)
-        val league = "English Premiere League"
+        val id = "1234"
 
-        `when`(gson.fromJson(apiRepository
-                .doRequest(TheSportDBApi.getTeams(league)),
+        Mockito.`when`(gson.fromJson(apiRepository
+                .doRequest(TheSportDBApi.getTeamDetail(id)),
                 TeamResponse::class.java
         )).thenReturn(response)
 
-        presenter.getTeamList(league)
+        presenter.getTeamDetail(id)
 
         Mockito.verify(view).showLoading()
-        Mockito.verify(view).showTeamList(teams)
+        Mockito.verify(view).showTeamDetail(teams)
         Mockito.verify(view).hideLoading()
     }
 

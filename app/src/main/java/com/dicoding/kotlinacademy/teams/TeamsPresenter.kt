@@ -7,15 +7,16 @@ import com.google.gson.Gson
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import org.jetbrains.anko.coroutines.experimental.bg
+import kotlin.coroutines.experimental.CoroutineContext
 
 class TeamsPresenter(private val view: TeamsView,
                      private val apiRepository: ApiRepository,
-                     private val gson: Gson) {
+                     private val gson: Gson, private val contextPool: CoroutineContextProvider = CoroutineContextProvider()) {
 
     fun getTeamList(league: String?) {
         view.showLoading()
 
-        async(UI){
+        async(contextPool.main){
             val data = bg {
                 gson.fromJson(apiRepository
                         .doRequest(TheSportDBApi.getTeams(league)),
@@ -27,4 +28,8 @@ class TeamsPresenter(private val view: TeamsView,
         }
     }
 
+}
+
+open class CoroutineContextProvider {
+    open val main: CoroutineContext by lazy { UI }
 }

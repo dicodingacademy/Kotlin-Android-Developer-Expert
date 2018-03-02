@@ -10,12 +10,12 @@ import org.jetbrains.anko.coroutines.experimental.bg
 
 class TeamsPresenter(private val view: TeamsView,
                      private val apiRepository: ApiRepository,
-                     private val gson: Gson, private val contextPool: CoroutinesContextProvider = CoroutinesContextProvider()) {
+                     private val gson: Gson, private val context: CoroutinesContextProvider = CoroutinesContextProvider()) {
 
     fun getTeamList(league: String?) {
         view.showLoading()
 
-        async(contextPool.main){
+        async(context.main){
             val data = bg {
                 gson.fromJson(apiRepository
                         .doRequest(TheSportDBApi.getTeams(league)),
@@ -26,5 +26,4 @@ class TeamsPresenter(private val view: TeamsView,
             view.hideLoading()
         }
     }
-
 }

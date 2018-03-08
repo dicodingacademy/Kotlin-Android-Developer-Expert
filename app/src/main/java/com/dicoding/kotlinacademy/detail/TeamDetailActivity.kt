@@ -15,6 +15,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import com.dicoding.kotlinacademy.R
 import com.dicoding.kotlinacademy.R.color.colorAccent
+import com.dicoding.kotlinacademy.R.color.colorPrimaryText
 import com.dicoding.kotlinacademy.R.drawable.ic_add_to_favorites
 import com.dicoding.kotlinacademy.R.drawable.ic_added_to_favorites
 import com.dicoding.kotlinacademy.R.id.add_to_favorite
@@ -89,7 +90,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
                                 teamName = textView{
                                     this.gravity = Gravity.CENTER
                                     textSize = 20f
-                                    textColor = ContextCompat.getColor(context, R.color.colorAccent)
+                                    textColor = ContextCompat.getColor(context, colorAccent)
                                 }.lparams{
                                     topMargin = dip(5)
                                 }
@@ -100,7 +101,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
 
                                 teamStadium = textView{
                                     this.gravity = Gravity.CENTER
-                                    textColor = ContextCompat.getColor(context, R.color.colorPrimaryText)
+                                    textColor = ContextCompat.getColor(context, colorPrimaryText)
                                 }
 
                                 teamDescription = textView().lparams{

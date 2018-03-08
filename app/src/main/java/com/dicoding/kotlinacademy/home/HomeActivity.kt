@@ -3,6 +3,9 @@ package com.dicoding.kotlinacademy.home
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.dicoding.kotlinacademy.R
+import com.dicoding.kotlinacademy.R.id.favorites
+import com.dicoding.kotlinacademy.R.id.teams
+import com.dicoding.kotlinacademy.R.layout.activity_home
 import com.dicoding.kotlinacademy.favorites.FavoriteTeamsFragment
 import com.dicoding.kotlinacademy.teams.TeamsFragment
 import kotlinx.android.synthetic.main.activity_home.*
@@ -11,20 +14,20 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(activity_home)
 
         bottom_navigation.setOnNavigationItemSelectedListener({ item ->
             when (item.itemId) {
-                R.id.teams -> {
+                teams -> {
                     loadTeamsFragment(savedInstanceState)
                 }
-                R.id.favorites -> {
+                favorites -> {
                     loadFavoritesFragment(savedInstanceState)
                 }
             }
             true
         })
-        bottom_navigation.selectedItemId = R.id.teams
+        bottom_navigation.selectedItemId = teams
     }
 
 

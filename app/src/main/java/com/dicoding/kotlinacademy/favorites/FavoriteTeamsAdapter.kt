@@ -1,13 +1,14 @@
 package com.dicoding.kotlinacademy.favorites
 
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.dicoding.kotlinacademy.R
+import com.dicoding.kotlinacademy.R.id.team_badge
+import com.dicoding.kotlinacademy.R.id.team_name
 import com.dicoding.kotlinacademy.db.Favorite
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
@@ -19,7 +20,7 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
 class FavoriteTeamsAdapter(private val favorite: List<Favorite>, private val listener: (Favorite) -> Unit)
     : RecyclerView.Adapter<FavoriteViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder? {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
         return FavoriteViewHolder(EventUI().createView(AnkoContext.create(parent.context, parent)))
     }
 
@@ -40,14 +41,14 @@ class EventUI : AnkoComponent<ViewGroup> {
               orientation = LinearLayout.HORIZONTAL
 
               imageView {
-                  id = R.id.team_badge
+                  id = team_badge
               }.lparams{
                   height = dip(50)
                   width = dip(50)
               }
 
               textView {
-                  id = R.id.team_name
+                  id = team_name
                   textSize = 16f
               }.lparams{
                   margin = dip(15)
@@ -61,8 +62,8 @@ class EventUI : AnkoComponent<ViewGroup> {
 
 class FavoriteViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
-    private val teamBadge: ImageView = view.find(R.id.team_badge)
-    private val teamName: TextView = view.find(R.id.team_name)
+    private val teamBadge: ImageView = view.find(team_badge)
+    private val teamName: TextView = view.find(team_name)
 
     fun bindItem(favorite: Favorite, listener: (Favorite) -> Unit) {
         Picasso.with(itemView.context).load(favorite.teamBadge).into(teamBadge)

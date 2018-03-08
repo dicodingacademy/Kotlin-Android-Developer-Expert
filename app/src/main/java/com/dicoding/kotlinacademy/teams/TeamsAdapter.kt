@@ -18,7 +18,7 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
 class TeamsAdapter(private val teams: List<Team>, private val listener: (Team) -> Unit)
     : RecyclerView.Adapter<TeamViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder? {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder {
         return TeamViewHolder(EventUI().createView(AnkoContext.create(parent.context, parent)))
     }
 

@@ -21,7 +21,7 @@ class FavoriteTeamsAdapter(private val favorite: List<Favorite>, private val lis
     : RecyclerView.Adapter<FavoriteViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
-        return FavoriteViewHolder(EventUI().createView(AnkoContext.create(parent.context, parent)))
+        return FavoriteViewHolder(TeamUI().createView(AnkoContext.create(parent.context, parent)))
     }
 
     override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
@@ -32,7 +32,7 @@ class FavoriteTeamsAdapter(private val favorite: List<Favorite>, private val lis
 
 }
 
-class EventUI : AnkoComponent<ViewGroup> {
+class TeamUI : AnkoComponent<ViewGroup> {
     override fun createView(ui: AnkoContext<ViewGroup>): View {
         return with(ui) {
           linearLayout{

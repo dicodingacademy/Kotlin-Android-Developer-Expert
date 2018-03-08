@@ -21,7 +21,7 @@ class TeamsAdapter(private val teams: List<Team>, private val listener: (Team) -
     : RecyclerView.Adapter<TeamViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder {
-        return TeamViewHolder(EventUI().createView(AnkoContext.create(parent.context, parent)))
+        return TeamViewHolder(TeamUI().createView(AnkoContext.create(parent.context, parent)))
     }
 
     override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {
@@ -32,7 +32,7 @@ class TeamsAdapter(private val teams: List<Team>, private val listener: (Team) -
 
 }
 
-class EventUI : AnkoComponent<ViewGroup> {
+class TeamUI : AnkoComponent<ViewGroup> {
     override fun createView(ui: AnkoContext<ViewGroup>): View {
         return with(ui) {
             linearLayout {

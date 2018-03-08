@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         initData()
 
         list.layoutManager = LinearLayoutManager(this)
-        list.adapter = RecylerViewAdapter(this, items)
+        list.adapter = RecyclerViewAdapter(this, items)
     }
 
     fun initData(){

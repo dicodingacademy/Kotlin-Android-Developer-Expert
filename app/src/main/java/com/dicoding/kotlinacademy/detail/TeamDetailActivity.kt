@@ -14,6 +14,10 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.dicoding.kotlinacademy.R
+import com.dicoding.kotlinacademy.R.color.colorAccent
+import com.dicoding.kotlinacademy.R.color.colorPrimaryText
+import com.dicoding.kotlinacademy.R.drawable.ic_add_to_favorites
+import com.dicoding.kotlinacademy.R.drawable.ic_added_to_favorites
 import com.dicoding.kotlinacademy.api.ApiRepository
 import com.dicoding.kotlinacademy.db.Favorite
 import com.dicoding.kotlinacademy.db.database
@@ -84,7 +88,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
                                 teamName = textView{
                                     this.gravity = Gravity.CENTER
                                     textSize = 20f
-                                    textColor = resources.getColor(R.color.colorAccent)
+                                    textColor = ContextCompat.getColor(context, colorAccent)
                                 }.lparams{
                                     topMargin = dip(5)
                                 }
@@ -95,7 +99,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
 
                                 teamStadium = textView{
                                     this.gravity = Gravity.CENTER
-                                    textColor = resources.getColor(R.color.colorPrimaryText)
+                                    textColor = ContextCompat.getColor(context, colorPrimaryText)
                                 }
 
                                 teamDescription = textView().lparams{
@@ -207,8 +211,8 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
 
     private fun setFavorite() {
         if (isFavorite)
-            menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, R.drawable.ic_added_to_favorites)
+            menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, ic_added_to_favorites)
         else
-            menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, R.drawable.ic_add_to_favorites)
+            menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, ic_add_to_favorites)
     }
 }

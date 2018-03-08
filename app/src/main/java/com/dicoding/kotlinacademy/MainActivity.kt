@@ -2,6 +2,7 @@ package com.dicoding.kotlinacademy
 
 import android.graphics.Color
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import com.dicoding.kotlinacademy.R.color.colorAccent
 import org.jetbrains.anko.*
@@ -20,12 +21,12 @@ class MainActivity : AppCompatActivity() {
             verticalLayout{
                 padding = dip(16)
 
-                val name = editText(){
+                val name = editText {
                     hint = "Who is your name?"
                 }
 
                 button("Say Hello"){
-                    backgroundColor = resources.getColor(colorAccent)
+                    backgroundColor = ContextCompat.getColor(context, colorAccent)
                     textColor = Color.WHITE
 
 
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 button("Show Alert"){
-                    backgroundColor = resources.getColor(colorAccent)
+                    backgroundColor = ContextCompat.getColor(context, colorAccent)
                     textColor = Color.WHITE
 
                     onClick {
@@ -50,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 button("Show Selector"){
-                    backgroundColor = resources.getColor(colorAccent)
+                    backgroundColor = ContextCompat.getColor(context, colorAccent)
                     textColor = Color.WHITE
 
                     onClick {
@@ -64,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 button("Show Snackbar"){
-                    backgroundColor = resources.getColor(colorAccent)
+                    backgroundColor = ContextCompat.getColor(context, colorAccent)
                     textColor = Color.WHITE
 
                     onClick {
@@ -76,7 +77,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 button("Show Progress Bar"){
-                    backgroundColor = resources.getColor(colorAccent)
+                    backgroundColor = ContextCompat.getColor(context, colorAccent)
                     textColor = Color.WHITE
 
                     onClick {
@@ -87,7 +88,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 button("Go to Second Activity"){
-                    backgroundColor = resources.getColor(colorAccent)
+                    backgroundColor = ContextCompat.getColor(context, colorAccent)
                     textColor = Color.WHITE
 
                     onClick {

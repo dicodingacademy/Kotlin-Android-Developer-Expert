@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.*
 import com.dicoding.kotlinacademy.R
+import com.dicoding.kotlinacademy.R.array.league
+import com.dicoding.kotlinacademy.R.color.colorAccent
 import com.dicoding.kotlinacademy.api.ApiRepository
 import com.dicoding.kotlinacademy.model.Team
 import com.dicoding.kotlinacademy.util.invisible
@@ -39,7 +41,7 @@ class MainActivity : AppCompatActivity(), MainView {
 
             spinner = spinner ()
             swipeRefresh = swipeRefreshLayout {
-                setColorSchemeResources(R.color.colorAccent,
+                setColorSchemeResources(colorAccent,
                         android.R.color.holo_green_light,
                         android.R.color.holo_orange_light,
                         android.R.color.holo_red_light)
@@ -60,7 +62,7 @@ class MainActivity : AppCompatActivity(), MainView {
             }
         }
 
-        val spinnerItems = resources.getStringArray(R.array.league)
+        val spinnerItems = resources.getStringArray(league)
         val spinnerAdapter = ArrayAdapter(ctx, android.R.layout.simple_spinner_dropdown_item, spinnerItems)
         spinner.adapter = spinnerAdapter
 

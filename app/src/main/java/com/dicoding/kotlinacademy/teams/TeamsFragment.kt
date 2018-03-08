@@ -12,6 +12,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.dicoding.kotlinacademy.R
+import com.dicoding.kotlinacademy.R.array.league
+import com.dicoding.kotlinacademy.R.color.colorAccent
 import com.dicoding.kotlinacademy.api.ApiRepository
 import com.dicoding.kotlinacademy.detail.TeamDetailActivity
 import com.dicoding.kotlinacademy.model.Team
@@ -40,7 +42,7 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
         super.onActivityCreated(savedInstanceState)
 
 
-        val spinnerItems = resources.getStringArray(R.array.league)
+        val spinnerItems = resources.getStringArray(league)
         val spinnerAdapter = ArrayAdapter(ctx, android.R.layout.simple_spinner_dropdown_item, spinnerItems)
         spinner.adapter = spinnerAdapter
 
@@ -80,7 +82,7 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
 
             spinner = spinner ()
             swipeRefresh = swipeRefreshLayout {
-                setColorSchemeResources(R.color.colorAccent,
+                setColorSchemeResources(colorAccent,
                         android.R.color.holo_green_light,
                         android.R.color.holo_orange_light,
                         android.R.color.holo_red_light)

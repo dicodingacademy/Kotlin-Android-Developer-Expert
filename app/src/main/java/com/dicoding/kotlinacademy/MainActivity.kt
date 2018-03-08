@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         initData()
 
         club_list.layoutManager = LinearLayoutManager(this)
-        club_list.adapter = RecylerViewAdapter(this, items)
+        club_list.adapter = RecyclerViewAdapter(this, items)
     }
 
     private fun initData(){

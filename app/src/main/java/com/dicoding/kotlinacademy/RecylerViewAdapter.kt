@@ -11,8 +11,8 @@ import kotlinx.android.synthetic.main.item_list.view.*
 /**
  * Created by root on 1/16/18.
  */
-class RecylerViewAdapter(private val context: Context, private val items: List<Item>)
-    : RecyclerView.Adapter<RecylerViewAdapter.ViewHolder>() {
+class RecyclerViewAdapter(private val context: Context, private val items: List<Item>)
+    : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
             ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_list, parent, false))

@@ -84,7 +84,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
                                 teamName = textView{
                                     this.gravity = Gravity.CENTER
                                     textSize = 20f
-                                    textColor = resources.getColor(R.color.colorAccent)
+                                    textColor = ContextCompat.getColor(context, R.color.colorAccent)
                                 }.lparams{
                                     topMargin = dip(5)
                                 }
@@ -95,7 +95,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
 
                                 teamStadium = textView{
                                     this.gravity = Gravity.CENTER
-                                    textColor = resources.getColor(R.color.colorPrimaryText)
+                                    textColor = ContextCompat.getColor(context, R.color.colorPrimaryText)
                                 }
 
                                 teamDescription = textView().lparams{

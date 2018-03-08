@@ -3,9 +3,8 @@ package com.dicoding.kotlinacademy.detail
 import com.dicoding.kotlinacademy.api.ApiRepository
 import com.dicoding.kotlinacademy.api.TheSportDBApi
 import com.dicoding.kotlinacademy.model.TeamResponse
-import com.dicoding.kotlinacademy.util.CoroutinesContextProvider
+import com.dicoding.kotlinacademy.util.CoroutineContextProvider
 import com.google.gson.Gson
-import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import org.jetbrains.anko.coroutines.experimental.bg
 
@@ -14,7 +13,7 @@ import org.jetbrains.anko.coroutines.experimental.bg
  */
 class TeamDetailPresenter(private val view: TeamDetailView,
                           private val apiRepository: ApiRepository,
-                          private val gson: Gson, private val contextPool: CoroutinesContextProvider = CoroutinesContextProvider()) {
+                          private val gson: Gson, private val contextPool: CoroutineContextProvider = CoroutineContextProvider()) {
 
     fun getTeamDetail(teamId: String) {
         view.showLoading()

@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.dicoding.kotlinacademy.R
+import com.dicoding.kotlinacademy.R.color.colorAccent
 import com.dicoding.kotlinacademy.db.Favorite
 import com.dicoding.kotlinacademy.db.database
 import com.dicoding.kotlinacademy.db.parser
@@ -65,7 +66,7 @@ class FavoriteTeamsFragment : Fragment(), AnkoComponent<Context> {
             rightPadding = dip(16)
 
             swipeRefresh = swipeRefreshLayout {
-                setColorSchemeResources(R.color.colorAccent,
+                setColorSchemeResources(colorAccent,
                         android.R.color.holo_green_light,
                         android.R.color.holo_orange_light,
                         android.R.color.holo_red_light)

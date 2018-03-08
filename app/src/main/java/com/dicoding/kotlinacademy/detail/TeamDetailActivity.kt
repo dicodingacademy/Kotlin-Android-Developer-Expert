@@ -14,6 +14,11 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.dicoding.kotlinacademy.R
+import com.dicoding.kotlinacademy.R.color.colorAccent
+import com.dicoding.kotlinacademy.R.drawable.ic_add_to_favorites
+import com.dicoding.kotlinacademy.R.drawable.ic_added_to_favorites
+import com.dicoding.kotlinacademy.R.id.add_to_favorite
+import com.dicoding.kotlinacademy.R.menu.detail_menu
 import com.dicoding.kotlinacademy.api.ApiRepository
 import com.dicoding.kotlinacademy.db.Favorite
 import com.dicoding.kotlinacademy.db.database
@@ -63,7 +68,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
             backgroundColor = Color.WHITE
 
             swipeRefresh = swipeRefreshLayout {
-                setColorSchemeResources(R.color.colorAccent,
+                setColorSchemeResources(colorAccent,
                         android.R.color.holo_green_light,
                         android.R.color.holo_orange_light,
                         android.R.color.holo_red_light)
@@ -154,7 +159,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.detail_menu, menu)
+        menuInflater.inflate(detail_menu, menu)
         menuItem = menu
         setFavorite()
         return true
@@ -166,7 +171,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
                 finish()
                 true
             }
-            R.id.add_to_favorite -> {
+            add_to_favorite -> {
                 if (isFavorite) removeFromFavorite() else addToFavorite()
 
                 isFavorite = !isFavorite
@@ -207,8 +212,8 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
 
     private fun setFavorite() {
         if (isFavorite)
-            menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, R.drawable.ic_added_to_favorites)
+            menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, ic_added_to_favorites)
         else
-            menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, R.drawable.ic_add_to_favorites)
+            menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, ic_add_to_favorites)
     }
 }

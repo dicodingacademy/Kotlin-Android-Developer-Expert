@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.dicoding.kotlinacademy.R.array.club_image
 import com.dicoding.kotlinacademy.R.array.club_name
+import com.dicoding.kotlinacademy.R.layout.activity_main
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -13,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(activity_main)
         initData()
 
         club_list.layoutManager = LinearLayoutManager(this)

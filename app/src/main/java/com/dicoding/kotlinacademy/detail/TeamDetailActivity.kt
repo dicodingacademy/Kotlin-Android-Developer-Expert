@@ -18,6 +18,8 @@ import com.dicoding.kotlinacademy.R.color.colorAccent
 import com.dicoding.kotlinacademy.R.color.colorPrimaryText
 import com.dicoding.kotlinacademy.R.drawable.ic_add_to_favorites
 import com.dicoding.kotlinacademy.R.drawable.ic_added_to_favorites
+import com.dicoding.kotlinacademy.R.id.add_to_favorite
+import com.dicoding.kotlinacademy.R.menu.detail_menu
 import com.dicoding.kotlinacademy.api.ApiRepository
 import com.dicoding.kotlinacademy.db.Favorite
 import com.dicoding.kotlinacademy.db.database
@@ -158,7 +160,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.detail_menu, menu)
+        menuInflater.inflate(detail_menu, menu)
         menuItem = menu
         setFavorite()
         return true
@@ -170,7 +172,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
                 finish()
                 true
             }
-            R.id.add_to_favorite -> {
+            add_to_favorite -> {
                 if (isFavorite) removeFromFavorite() else addToFavorite()
 
                 isFavorite = !isFavorite

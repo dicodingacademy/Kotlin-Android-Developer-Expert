@@ -1,5 +1,5 @@
 # Kotlin-Android-Developer-Expert
-Repositori ini berisi semua project yang ada di [Kotlin Android Developer Expert][kotlin-android-developer-expert].
+Repositori ini berisi semua project yang ada di [Kotlin Android Developer Expert][kotlin-android-developer-expert]. Untuk beralih ke project yang lain, Anda bisa memilih project pada menu `branch`.
 
 Ingin Belajar bahasa Kotlin untuk menjadi Kotlin Android Developer Expert?
 

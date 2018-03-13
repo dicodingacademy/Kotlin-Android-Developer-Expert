@@ -5,6 +5,6 @@ Ingin Belajar bahasa Kotlin untuk menjadi Kotlin Android Developer Expert?
 
 Peserta akan mempelajari tentang dasar-dasar bahasa pemrograman Kotlin, penerapan Kotlin dalam pengembangan aplikasi Android, Kotlin Android Extensions, Anko, mengambil data dari API, SQLite di dalam Kotlin, Kotlin Coroutines, dan juga Testing.
 
-Silahkan daftar di [dicoding.id/a/14][kotlin-android-developer-expert].
+Silahkan daftar di [dicoding.id/a/55][kotlin-android-developer-expert].
 
 [kotlin-android-developer-expert]: https://www.dicoding.com/academies/55/

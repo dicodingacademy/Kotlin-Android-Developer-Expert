@@ -17,13 +17,13 @@ import com.dicoding.kotlinacademy.R
 import com.dicoding.kotlinacademy.api.ApiRepository
 import com.dicoding.kotlinacademy.db.Favorite
 import com.dicoding.kotlinacademy.db.database
-import com.dicoding.kotlinacademy.db.parser
 import com.dicoding.kotlinacademy.model.Team
 import com.dicoding.kotlinacademy.util.invisible
 import com.dicoding.kotlinacademy.util.visible
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
+import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.delete
 import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
@@ -127,7 +127,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
             val result = select(Favorite.TABLE_FAVORITE)
                     .whereArgs("(TEAM_ID = {id})",
                             "id" to id)
-            val favorite = result.parseList(parser)
+            val favorite = result.parseList(classParser<Favorite>())
             if (!favorite.isEmpty()) isFavorite = true
         }
     }

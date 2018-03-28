@@ -38,7 +38,3 @@ class MyDatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "Favorit
 // Access property for Context
 val Context.database: MyDatabaseOpenHelper
     get() = MyDatabaseOpenHelper.getInstance(applicationContext)
-
-val parser = rowParser {
-    id: Long?, teamId: String?, teamName: String?, teamBadge: String? ->
-    Favorite(id, teamId, teamName, teamBadge) }

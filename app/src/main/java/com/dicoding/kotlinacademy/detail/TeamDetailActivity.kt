@@ -14,12 +14,6 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.dicoding.kotlinacademy.R
-import com.dicoding.kotlinacademy.R.color.colorAccent
-import com.dicoding.kotlinacademy.R.color.colorPrimaryText
-import com.dicoding.kotlinacademy.R.drawable.ic_add_to_favorites
-import com.dicoding.kotlinacademy.R.drawable.ic_added_to_favorites
-import com.dicoding.kotlinacademy.R.id.add_to_favorite
-import com.dicoding.kotlinacademy.R.menu.detail_menu
 import com.dicoding.kotlinacademy.api.ApiRepository
 import com.dicoding.kotlinacademy.db.Favorite
 import com.dicoding.kotlinacademy.db.database
@@ -90,7 +84,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
                                 teamName = textView{
                                     this.gravity = Gravity.CENTER
                                     textSize = 20f
-                                    textColor = ContextCompat.getColor(context, colorAccent)
+                                    textColor = resources.getColor(R.color.colorAccent)
                                 }.lparams{
                                     topMargin = dip(5)
                                 }
@@ -101,7 +95,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
 
                                 teamStadium = textView{
                                     this.gravity = Gravity.CENTER
-                                    textColor = ContextCompat.getColor(context, colorPrimaryText)
+                                    textColor = resources.getColor(R.color.colorPrimaryText)
                                 }
 
                                 teamDescription = textView().lparams{
@@ -151,7 +145,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
                 data[0].teamName,
                 data[0].teamBadge)
         swipeRefresh.isRefreshing = false
-        Picasso.with(this).load(data[0].teamBadge).into(teamBadge)
+        Picasso.with(this).load("http://"+data[0].teamBadge).into(teamBadge)
         teamName.text = data[0].teamName
         teamDescription.text = data[0].teamDescription
         teamFormedYear.text = data[0].teamFormedYear
@@ -160,7 +154,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(detail_menu, menu)
+        menuInflater.inflate(R.menu.detail_menu, menu)
         menuItem = menu
         setFavorite()
         return true
@@ -172,7 +166,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
                 finish()
                 true
             }
-            add_to_favorite -> {
+            R.id.add_to_favorite -> {
                 if (isFavorite) removeFromFavorite() else addToFavorite()
 
                 isFavorite = !isFavorite
@@ -213,8 +207,8 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
 
     private fun setFavorite() {
         if (isFavorite)
-            menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, ic_added_to_favorites)
+            menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, R.drawable.ic_added_to_favorites)
         else
-            menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, ic_add_to_favorites)
+            menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, R.drawable.ic_add_to_favorites)
     }
 }

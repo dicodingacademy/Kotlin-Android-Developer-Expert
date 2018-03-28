@@ -14,9 +14,9 @@ import com.dicoding.kotlinacademy.R
 import com.dicoding.kotlinacademy.R.color.colorAccent
 import com.dicoding.kotlinacademy.db.Favorite
 import com.dicoding.kotlinacademy.db.database
-import com.dicoding.kotlinacademy.db.parser
 import com.dicoding.kotlinacademy.detail.TeamDetailActivity
 import org.jetbrains.anko.*
+import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.ctx
@@ -48,7 +48,7 @@ class FavoriteTeamsFragment : Fragment(), AnkoComponent<Context> {
         context?.database?.use {
             swipeRefresh.isRefreshing = false
             val result = select(Favorite.TABLE_FAVORITE)
-            val favorite = result.parseList(parser)
+            val favorite = result.parseList(classParser<Favorite>())
             favorites.addAll(favorite)
             adapter.notifyDataSetChanged()
         }

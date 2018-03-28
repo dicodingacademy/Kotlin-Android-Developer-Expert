@@ -13,7 +13,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
-import com.dicoding.kotlinacademy.R
 import com.dicoding.kotlinacademy.R.color.colorAccent
 import com.dicoding.kotlinacademy.R.color.colorPrimaryText
 import com.dicoding.kotlinacademy.R.drawable.ic_add_to_favorites
@@ -23,19 +22,20 @@ import com.dicoding.kotlinacademy.R.menu.detail_menu
 import com.dicoding.kotlinacademy.api.ApiRepository
 import com.dicoding.kotlinacademy.db.Favorite
 import com.dicoding.kotlinacademy.db.database
-import com.dicoding.kotlinacademy.db.parser
 import com.dicoding.kotlinacademy.model.Team
 import com.dicoding.kotlinacademy.util.invisible
 import com.dicoding.kotlinacademy.util.visible
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
+import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.delete
 import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.design.snackbar
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
+
 /**
  * Created by root on 2/3/18.
  */
@@ -133,7 +133,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
             val result = select(Favorite.TABLE_FAVORITE)
                     .whereArgs("(TEAM_ID = {id})",
                             "id" to id)
-            val favorite = result.parseList(parser)
+            val favorite = result.parseList(classParser<Favorite>())
             if (!favorite.isEmpty()) isFavorite = true
         }
     }

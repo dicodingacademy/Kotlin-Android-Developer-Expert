@@ -20,6 +20,7 @@ import com.dicoding.kotlinacademy.model.Team
 import com.dicoding.kotlinacademy.util.invisible
 import com.dicoding.kotlinacademy.util.visible
 import com.google.gson.Gson
+import kotlinx.coroutines.experimental.runBlocking
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.ctx
@@ -80,7 +81,9 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
             leftPadding = dip(16)
             rightPadding = dip(16)
 
-            spinner = spinner ()
+            spinner = spinner {
+                id = R.id.spinner
+            }
             swipeRefresh = swipeRefreshLayout {
                 setColorSchemeResources(colorAccent,
                         android.R.color.holo_green_light,
@@ -91,6 +94,7 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
                     lparams (width = matchParent, height = wrapContent)
 
                     listEvent = recyclerView {
+                        id = R.id.listEvent
                         lparams (width = matchParent, height = wrapContent)
                         layoutManager = LinearLayoutManager(ctx)
                     }

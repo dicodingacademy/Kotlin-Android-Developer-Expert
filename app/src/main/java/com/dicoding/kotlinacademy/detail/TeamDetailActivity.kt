@@ -13,10 +13,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
-<<<<<<< HEAD
-=======
-import com.dicoding.kotlinacademy.R
->>>>>>> b325a83c436689ebbc059362f3b6baa29588df3b
+
 import com.dicoding.kotlinacademy.R.color.colorAccent
 import com.dicoding.kotlinacademy.R.color.colorPrimaryText
 import com.dicoding.kotlinacademy.R.drawable.ic_add_to_favorites

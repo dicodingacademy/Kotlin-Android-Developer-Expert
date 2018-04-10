@@ -152,7 +152,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
                 data[0].teamName,
                 data[0].teamBadge)
         swipeRefresh.isRefreshing = false
-        Picasso.with(this).load(data[0].teamBadge).into(teamBadge)
+        Picasso.get().load(data[0].teamBadge).into(teamBadge)
         teamName.text = data[0].teamName
         teamDescription.text = data[0].teamDescription
         teamFormedYear.text = data[0].teamFormedYear

@@ -66,7 +66,7 @@ class FavoriteViewHolder(view: View) : RecyclerView.ViewHolder(view){
     private val teamName: TextView = view.find(team_name)
 
     fun bindItem(favorite: Favorite, listener: (Favorite) -> Unit) {
-        Picasso.with(itemView.context).load(favorite.teamBadge).into(teamBadge)
+        Picasso.get().load(favorite.teamBadge).into(teamBadge)
         teamName.text = favorite.teamName
         itemView.onClick { listener(favorite) }
     }

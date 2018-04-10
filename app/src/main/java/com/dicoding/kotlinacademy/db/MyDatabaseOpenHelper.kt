@@ -16,7 +16,7 @@ class MyDatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "Favorit
             if (instance == null) {
                 instance = MyDatabaseOpenHelper(ctx.applicationContext)
             }
-            return instance!!
+            return instance as MyDatabaseOpenHelper
         }
     }
 

@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         list.adapter = RecyclerViewAdapter(this, items)
     }
 
-    fun initData(){
+    private fun initData(){
         val name = resources.getStringArray(R.array.club_name)
         val image = resources.obtainTypedArray(R.array.club_image)
         items.clear()

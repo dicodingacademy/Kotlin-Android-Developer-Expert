@@ -4,8 +4,6 @@ import com.dicoding.kotlinacademy.TestContextProvider
 import com.dicoding.kotlinacademy.api.ApiRepository
 import com.dicoding.kotlinacademy.api.TheSportDBApi
 import com.dicoding.kotlinacademy.model.TeamResponse
-import com.dicoding.kotlinacademy.teams.TeamsPresenter
-import com.dicoding.kotlinacademy.teams.TeamsView
 import com.google.gson.Gson
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.describe

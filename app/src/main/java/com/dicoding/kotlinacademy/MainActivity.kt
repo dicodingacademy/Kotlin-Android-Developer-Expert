@@ -56,9 +56,9 @@ class MainActivity : AppCompatActivity() {
 
                     onClick {
                         val club = listOf("Barcelona", "Real Madrid", "Bayern Munchen", "Liverpool")
-                        selector("Hello, ${name.text}! What's football club do you love?", club, { dialogInterface, i ->
+                        selector("Hello, ${name.text}! What's football club do you love?", club) { _, i ->
                             toast("So you're love ${club[i]}, right?")
-                        })
+                        }
                     }
                 }.lparams(width = matchParent){
                     topMargin = dip(5)

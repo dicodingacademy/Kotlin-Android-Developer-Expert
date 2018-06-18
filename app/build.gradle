@@ -58,7 +58,7 @@ dependencies {
     testImplementation "org.mockito:mockito-inline:2.18.3"
 
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestCompile 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     androidTestImplementation("com.android.support.test.espresso:espresso-contrib:2.2.2") {
         exclude group: 'com.android.support', module: 'appcompat-v7'

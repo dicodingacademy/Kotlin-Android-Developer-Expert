@@ -16,7 +16,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(activity_home)
 
-        bottom_navigation.setOnNavigationItemSelectedListener({ item ->
+        bottom_navigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 teams -> {
                     loadTeamsFragment(savedInstanceState)
@@ -26,7 +26,7 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
             true
-        })
+        }
         bottom_navigation.selectedItemId = teams
     }
 

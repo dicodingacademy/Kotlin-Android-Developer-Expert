@@ -3,6 +3,7 @@ package com.dicoding.kotlinacademy
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.widget.Toast
 import com.dicoding.kotlinacademy.R.array.club_image
 import com.dicoding.kotlinacademy.R.array.club_name
 import com.dicoding.kotlinacademy.R.layout.activity_main
@@ -18,7 +19,10 @@ class MainActivity : AppCompatActivity() {
         initData()
 
         club_list.layoutManager = LinearLayoutManager(this)
-        club_list.adapter = RecyclerViewAdapter(this, items)
+        club_list.adapter = RecyclerViewAdapter(this, items){
+            val toast = Toast.makeText(applicationContext, it.name, Toast.LENGTH_SHORT)
+            toast.show()
+        }
     }
 
     private fun initData(){

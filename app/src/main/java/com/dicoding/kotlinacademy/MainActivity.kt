@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
                 padding = dip(16)
 
                 val name = editText {
-                    hint = "Who is your name?"
+                    hint = "What's your name?"
                 }
 
                 button("Say Hello"){
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                     onClick {
                         val club = listOf("Barcelona", "Real Madrid", "Bayern Munchen", "Liverpool")
                         selector("Hello, ${name.text}! What's football club do you love?", club) { _, i ->
-                            toast("So you're love ${club[i]}, right?")
+                            toast("So you love ${club[i]}, right?")
                         }
                     }
                 }.lparams(width = matchParent){

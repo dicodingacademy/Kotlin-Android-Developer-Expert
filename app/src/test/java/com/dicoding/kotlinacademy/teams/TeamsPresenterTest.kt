@@ -3,56 +3,48 @@ package com.dicoding.kotlinacademy.teams
 import com.dicoding.kotlinacademy.TestContextProvider
 import com.dicoding.kotlinacademy.api.ApiRepository
 import com.dicoding.kotlinacademy.api.TheSportDBApi
-import com.dicoding.kotlinacademy.model.Team
 import com.dicoding.kotlinacademy.model.TeamResponse
 import com.google.gson.Gson
-import org.junit.Before
-import org.junit.Test
-import org.mockito.Mock
+import org.jetbrains.spek.api.Spek
+import org.jetbrains.spek.api.dsl.describe
+import org.jetbrains.spek.api.dsl.it
+import org.jetbrains.spek.api.dsl.on
+import org.junit.platform.runner.JUnitPlatform
+import org.junit.runner.RunWith
 import org.mockito.Mockito
-import org.mockito.Mockito.`when`
-import org.mockito.MockitoAnnotations
 
 /**
  * Created by root on 2/28/18.
  */
-class TeamsPresenterTest {
-    @Mock
-    private
-    lateinit var view: TeamsView
 
-    @Mock
-    private
-    lateinit var gson: Gson
+@RunWith(JUnitPlatform::class)
+class TeamsPresenterTest : Spek({
 
-    @Mock
-    private
-    lateinit var apiRepository: ApiRepository
+    describe("test get team list") {
 
-    private lateinit var presenter: TeamsPresenter
+        val gson = Mockito.mock(Gson::class.java)
+        val view = Mockito.mock(TeamsView::class.java)
+        val teamResponse = Mockito.mock(TeamResponse::class.java)
+        val apiRepository = Mockito.mock(ApiRepository::class.java)
+        val presenter = TeamsPresenter(view, apiRepository, gson, TestContextProvider())
+        val league = "Spanish La liga"
 
-    @Before
-    fun setUp() {
-        MockitoAnnotations.initMocks(this)
-        presenter = TeamsPresenter(view, apiRepository, gson, TestContextProvider())
+        on("get team list") {
+            Mockito.`when`(
+                    gson.fromJson(
+                            apiRepository.doRequest(TheSportDBApi.getTeams(league)),
+                            TeamResponse::class.java)).thenReturn(teamResponse)
+            presenter.getTeamList(league)
+
+            it("show loading") {
+                Mockito.verify(view).showLoading()
+            }
+            it("success get team list") {
+                Mockito.verify(view).showTeamList(teamResponse.teams)
+            }
+            it("hide loading") {
+                Mockito.verify(view).hideLoading()
+            }
+        }
     }
-
-    @Test
-    fun testGetTeamList() {
-        val teams: MutableList<Team> = mutableListOf()
-        val response = TeamResponse(teams)
-        val league = "English Premiere League"
-
-        `when`(gson.fromJson(apiRepository
-                .doRequest(TheSportDBApi.getTeams(league)),
-                TeamResponse::class.java
-        )).thenReturn(response)
-
-        presenter.getTeamList(league)
-
-        Mockito.verify(view).showLoading()
-        Mockito.verify(view).showTeamList(teams)
-        Mockito.verify(view).hideLoading()
-    }
-
-}
+})

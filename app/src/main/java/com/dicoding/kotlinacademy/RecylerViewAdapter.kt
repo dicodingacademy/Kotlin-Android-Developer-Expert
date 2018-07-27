@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.dicoding.kotlinacademy.R.layout.item_list
-import kotlinx.android.synthetic.main.item_list.view.*
+import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.item_list.*
 
 /**
  * Created by root on 1/16/18.
@@ -24,12 +25,14 @@ class RecyclerViewAdapter(private val context: Context, private val items: List<
 
     override fun getItemCount(): Int = items.size
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
+
+    class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView),
+            LayoutContainer {
 
         fun bindItem(items: Item, listener: (Item) -> Unit) {
-            itemView.name.text = items.name
-            Glide.with(itemView.context).load(items.image).into(itemView.image)
-            itemView.setOnClickListener { listener(items) }
+            name.text = items.name
+            Glide.with(containerView).load(items.image).into(image)
+            containerView.setOnClickListener { listener(items) }
         }
     }
 }

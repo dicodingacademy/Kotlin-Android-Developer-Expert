@@ -54,7 +54,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
 
     testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-core:2.20.0'
+    testImplementation 'org.mockito:mockito-core:2.21.0'
     testImplementation "org.mockito:mockito-inline:2.19.0"
 
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

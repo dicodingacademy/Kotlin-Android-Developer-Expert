@@ -1,7 +1,6 @@
 package com.dicoding.kotlinacademy.model
 
 import com.google.gson.annotations.SerializedName
-import java.util.*
 
 /**
  * Created by root on 1/23/18.

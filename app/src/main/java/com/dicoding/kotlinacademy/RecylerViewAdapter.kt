@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.bumptech.glide.Glide
+import com.squareup.picasso.Picasso
 
 /**
  * Created by root on 1/16/18.
@@ -31,7 +31,7 @@ class RecyclerViewAdapter(private val context: Context, private val items: List<
 
         fun bindItem(items: Item, listener: (Item) -> Unit) {
             name.text = items.name
-            Glide.with(itemView.context).load(items.image).into(image)
+            items.image?.let { Picasso.get().load(it).into(image) }
             itemView.setOnClickListener { listener(items) }
         }
     }

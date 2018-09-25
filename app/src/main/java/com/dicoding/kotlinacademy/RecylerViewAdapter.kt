@@ -5,8 +5,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
 import com.dicoding.kotlinacademy.R.layout.item_list
+import com.squareup.picasso.Picasso
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_list.*
 
@@ -31,7 +31,7 @@ class RecyclerViewAdapter(private val context: Context, private val items: List<
 
         fun bindItem(items: Item, listener: (Item) -> Unit) {
             name.text = items.name
-            Glide.with(containerView).load(items.image).into(image)
+            items.image?.let { Picasso.get().load(it).into(image) }
             containerView.setOnClickListener { listener(items) }
         }
     }

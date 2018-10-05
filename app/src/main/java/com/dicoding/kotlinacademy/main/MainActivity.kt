@@ -1,13 +1,12 @@
 package com.dicoding.kotlinacademy.main
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.*
-import com.dicoding.kotlinacademy.R
 import com.dicoding.kotlinacademy.R.array.league
 import com.dicoding.kotlinacademy.R.color.colorAccent
 import com.dicoding.kotlinacademy.api.ApiRepository

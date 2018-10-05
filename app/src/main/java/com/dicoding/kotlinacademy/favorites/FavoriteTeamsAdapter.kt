@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.dicoding.kotlinacademy.R
 import com.dicoding.kotlinacademy.R.id.team_badge
 import com.dicoding.kotlinacademy.R.id.team_name
 import com.dicoding.kotlinacademy.db.Favorite

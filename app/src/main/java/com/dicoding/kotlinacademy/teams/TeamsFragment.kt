@@ -57,7 +57,7 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
         presenter = TeamsPresenter(this, request, gson)
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                leagueName = spinner.selectedItem.toString()
+                leagueName = spinner.selectedItem.toString().replace(" ", "%20")
                 presenter.getTeamList(leagueName)
             }
 

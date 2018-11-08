@@ -21,7 +21,6 @@ import com.dicoding.kotlinacademy.util.visible
 import com.google.gson.Gson
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
-import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
@@ -42,11 +41,11 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
 
 
         val spinnerItems = resources.getStringArray(league)
-        val spinnerAdapter = ArrayAdapter(ctx, android.R.layout.simple_spinner_dropdown_item, spinnerItems)
+        val spinnerAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, spinnerItems)
         spinner.adapter = spinnerAdapter
 
         adapter = TeamsAdapter(teams) {
-            ctx.startActivity<TeamDetailActivity>("id" to "${it.teamId}")
+            context?.startActivity<TeamDetailActivity>("id" to "${it.teamId}")
         }
         listEvent.adapter = adapter
 
@@ -68,7 +67,7 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return createView(AnkoContext.create(ctx))
+        return createView(AnkoContext.create(requireContext()))
     }
 
     override fun createView(ui: AnkoContext<Context>): View = with(ui){

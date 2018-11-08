@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity(), MainView {
 
                     listTeam = recyclerView {
                         lparams (width = matchParent, height = wrapContent)
-                        layoutManager = LinearLayoutManager(ctx)
+                        layoutManager = LinearLayoutManager(context)
                     }
 
                     progressBar = progressBar {
@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity(), MainView {
         }
 
         val spinnerItems = resources.getStringArray(league)
-        val spinnerAdapter = ArrayAdapter(ctx, android.R.layout.simple_spinner_dropdown_item, spinnerItems)
+        val spinnerAdapter = ArrayAdapter(applicationContext, android.R.layout.simple_spinner_dropdown_item, spinnerItems)
         spinner.adapter = spinnerAdapter
 
         adapter = MainAdapter(teams)

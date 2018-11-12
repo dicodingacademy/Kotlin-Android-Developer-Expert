@@ -35,21 +35,17 @@ class FavoriteTeamsFragment : Fragment(), AnkoComponent<Context> {
 
         listEvent.adapter = adapter
         swipeRefresh.onRefresh {
-            refreshData()
+            showFavorite()
         }
-    }
-
-    private fun refreshData(){
-        favorites.clear()
-        showFavorite()
     }
 
     override fun onResume() {
         super.onResume()
-        refreshData()
+        showFavorite()
     }
 
     private fun showFavorite(){
+        favorites.clear()
         context?.database?.use {
             swipeRefresh.isRefreshing = false
             val result = select(Favorite.TABLE_FAVORITE)

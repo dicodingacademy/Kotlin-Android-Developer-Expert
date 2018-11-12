@@ -34,11 +34,19 @@ class FavoriteTeamsFragment : Fragment(), AnkoComponent<Context> {
         }
 
         listEvent.adapter = adapter
-        showFavorite()
         swipeRefresh.onRefresh {
-            favorites.clear()
-            showFavorite()
+            refreshData()
         }
+    }
+
+    private fun refreshData(){
+        favorites.clear()
+        showFavorite()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        refreshData()
     }
 
     private fun showFavorite(){

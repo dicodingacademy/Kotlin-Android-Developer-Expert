@@ -17,7 +17,6 @@ import org.jetbrains.anko.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.recyclerview.v7.recyclerView
-import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
@@ -31,18 +30,22 @@ class FavoriteTeamsFragment : Fragment(), AnkoComponent<Context> {
         super.onActivityCreated(savedInstanceState)
 
         adapter = FavoriteTeamsAdapter(favorites){
-            ctx.startActivity<TeamDetailActivity>("id" to "${it.teamId}")
+            context?.startActivity<TeamDetailActivity>("id" to "${it.teamId}")
         }
 
         listEvent.adapter = adapter
-        showFavorite()
         swipeRefresh.onRefresh {
-            favorites.clear()
             showFavorite()
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        showFavorite()
+    }
+
     private fun showFavorite(){
+        favorites.clear()
         context?.database?.use {
             swipeRefresh.isRefreshing = false
             val result = select(Favorite.TABLE_FAVORITE)
@@ -53,7 +56,7 @@ class FavoriteTeamsFragment : Fragment(), AnkoComponent<Context> {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return createView(AnkoContext.create(ctx))
+        return createView(AnkoContext.create(requireContext()))
     }
 
     override fun createView(ui: AnkoContext<Context>): View = with(ui){

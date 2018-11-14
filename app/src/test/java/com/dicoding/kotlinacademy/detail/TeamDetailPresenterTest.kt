@@ -6,6 +6,8 @@ import com.dicoding.kotlinacademy.api.TheSportDBApi
 import com.dicoding.kotlinacademy.model.Team
 import com.dicoding.kotlinacademy.model.TeamResponse
 import com.google.gson.Gson
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -37,21 +39,23 @@ class TeamDetailPresenterTest {
     }
 
     @Test
-    fun testGetTeamDetail() {
+    fun testGetTeamDetail()  {
         val teams: MutableList<Team> = mutableListOf()
         val response = TeamResponse(teams)
         val id = "1234"
 
-        Mockito.`when`(gson.fromJson(apiRepository
-                .doRequest(TheSportDBApi.getTeamDetail(id)),
-                TeamResponse::class.java
-        )).thenReturn(response)
+        GlobalScope.launch {
+            Mockito.`when`(gson.fromJson(apiRepository
+                    .doRequest(TheSportDBApi.getTeamDetail(id)).await(),
+                    TeamResponse::class.java
+            )).thenReturn(response)
 
-        presenter.getTeamDetail(id)
+            presenter.getTeamDetail(id)
 
-        Mockito.verify(view).showLoading()
-        Mockito.verify(view).showTeamDetail(teams)
-        Mockito.verify(view).hideLoading()
+            Mockito.verify(view).showLoading()
+            Mockito.verify(view).showTeamDetail(teams)
+            Mockito.verify(view).hideLoading()
+        }
     }
 
 }

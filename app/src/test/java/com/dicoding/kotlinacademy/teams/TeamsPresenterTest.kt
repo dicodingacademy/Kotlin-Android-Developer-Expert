@@ -6,6 +6,8 @@ import com.dicoding.kotlinacademy.api.TheSportDBApi
 import com.dicoding.kotlinacademy.model.Team
 import com.dicoding.kotlinacademy.model.TeamResponse
 import com.google.gson.Gson
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -43,16 +45,18 @@ class TeamsPresenterTest {
         val response = TeamResponse(teams)
         val league = "English Premiere League"
 
-        `when`(gson.fromJson(apiRepository
-                .doRequest(TheSportDBApi.getTeams(league)),
-                TeamResponse::class.java
-        )).thenReturn(response)
+       GlobalScope.launch {
+           `when`(gson.fromJson(apiRepository
+                   .doRequest(TheSportDBApi.getTeams(league)).await(),
+                   TeamResponse::class.java
+           )).thenReturn(response)
 
-        presenter.getTeamList(league)
+           presenter.getTeamList(league)
 
-        Mockito.verify(view).showLoading()
-        Mockito.verify(view).showTeamList(teams)
-        Mockito.verify(view).hideLoading()
+           Mockito.verify(view).showLoading()
+           Mockito.verify(view).showTeamList(teams)
+           Mockito.verify(view).hideLoading()
+       }
     }
 
 }

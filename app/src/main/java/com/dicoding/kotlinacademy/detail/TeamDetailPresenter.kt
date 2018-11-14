@@ -5,8 +5,8 @@ import com.dicoding.kotlinacademy.api.TheSportDBApi
 import com.dicoding.kotlinacademy.model.TeamResponse
 import com.dicoding.kotlinacademy.util.CoroutineContextProvider
 import com.google.gson.Gson
-import kotlinx.coroutines.experimental.async
-import org.jetbrains.anko.coroutines.experimental.bg
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 /**
  * Created by root on 2/3/18.
@@ -18,15 +18,13 @@ class TeamDetailPresenter(private val view: TeamDetailView,
     fun getTeamDetail(teamId: String) {
         view.showLoading()
 
-        async(contextPool.main){
-            val data = bg{
-                gson.fromJson(apiRepository
-                        .doRequest(TheSportDBApi.getTeamDetail(teamId)),
+        GlobalScope.launch(contextPool.main){
+            val data = gson.fromJson(apiRepository
+                        .doRequest(TheSportDBApi.getTeamDetail(teamId)).await(),
                         TeamResponse::class.java
                 )
-            }
 
-            view.showTeamDetail(data.await().teams)
+            view.showTeamDetail(data.teams)
             view.hideLoading()
         }
     }

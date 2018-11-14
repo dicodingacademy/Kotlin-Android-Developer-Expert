@@ -11,7 +11,6 @@ import com.dicoding.kotlinacademy.R.id.team_name
 import com.dicoding.kotlinacademy.model.Team
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
-import org.jetbrains.anko.sdk25.coroutines.onClick
 
 /**
  * Created by root on 1/16/18.
@@ -67,6 +66,6 @@ class TeamViewHolder(view: View) : RecyclerView.ViewHolder(view){
     fun bindItem(teams: Team, listener: (Team) -> Unit) {
         Picasso.get().load(teams.teamBadge).into(teamBadge)
         teamName.text = teams.teamName
-        itemView.onClick { listener(teams) }
+        itemView.setOnClickListener { listener(teams) }
     }
 }

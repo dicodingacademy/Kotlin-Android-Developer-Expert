@@ -30,14 +30,13 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
     private lateinit var presenter: TeamsPresenter
     private lateinit var adapter: TeamsAdapter
     private lateinit var spinner: Spinner
-    private lateinit var listEvent: RecyclerView
+    private lateinit var listTeam: RecyclerView
     private lateinit var progressBar: ProgressBar
     private lateinit var swipeRefresh: SwipeRefreshLayout
     private lateinit var leagueName: String
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
 
         val spinnerItems = resources.getStringArray(league)
         val spinnerAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, spinnerItems)
@@ -46,7 +45,7 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
         adapter = TeamsAdapter(teams) {
             context?.startActivity<TeamDetailActivity>("id" to "${it.teamId}")
         }
-        listEvent.adapter = adapter
+        listTeam.adapter = adapter
 
         val request = ApiRepository()
         val gson = Gson()
@@ -87,7 +86,7 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
                 relativeLayout{
                     lparams (width = matchParent, height = wrapContent)
 
-                    listEvent = recyclerView {
+                    listTeam = recyclerView {
                         lparams (width = matchParent, height = wrapContent)
                         layoutManager = LinearLayoutManager(ctx)
                     }

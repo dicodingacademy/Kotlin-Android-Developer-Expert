@@ -23,7 +23,7 @@ import org.jetbrains.anko.support.v4.swipeRefreshLayout
 class FavoriteTeamsFragment : Fragment(), AnkoComponent<Context> {
     private var favorites: MutableList<Favorite> = mutableListOf()
     private lateinit var adapter: FavoriteTeamsAdapter
-    private lateinit var listEvent: RecyclerView
+    private lateinit var listTeam: RecyclerView
     private lateinit var swipeRefresh: SwipeRefreshLayout
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -33,7 +33,7 @@ class FavoriteTeamsFragment : Fragment(), AnkoComponent<Context> {
             context?.startActivity<TeamDetailActivity>("id" to "${it.teamId}")
         }
 
-        listEvent.adapter = adapter
+        listTeam.adapter = adapter
         swipeRefresh.onRefresh {
             showFavorite()
         }
@@ -72,7 +72,7 @@ class FavoriteTeamsFragment : Fragment(), AnkoComponent<Context> {
                         android.R.color.holo_orange_light,
                         android.R.color.holo_red_light)
 
-                listEvent = recyclerView {
+                listTeam = recyclerView {
                     lparams (width = matchParent, height = wrapContent)
                     layoutManager = LinearLayoutManager(ctx)
                 }

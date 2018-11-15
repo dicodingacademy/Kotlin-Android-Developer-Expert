@@ -31,7 +31,7 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
     private lateinit var presenter: TeamsPresenter
     private lateinit var adapter: TeamsAdapter
     private lateinit var spinner: Spinner
-    private lateinit var listEvent: RecyclerView
+    private lateinit var listTeam: RecyclerView
     private lateinit var progressBar: ProgressBar
     private lateinit var swipeRefresh: SwipeRefreshLayout
     private lateinit var leagueName: String
@@ -47,7 +47,7 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
         adapter = TeamsAdapter(teams) {
             context?.startActivity<TeamDetailActivity>("id" to "${it.teamId}")
         }
-        listEvent.adapter = adapter
+        listTeam.adapter = adapter
 
         val request = ApiRepository()
         val gson = Gson()
@@ -90,8 +90,8 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
                 relativeLayout{
                     lparams (width = matchParent, height = wrapContent)
 
-                    listEvent = recyclerView {
-                        id = R.id.listEvent
+                    listTeam = recyclerView {
+                        id = R.id.list_team
                         lparams (width = matchParent, height = wrapContent)
                         layoutManager = LinearLayoutManager(ctx)
                     }

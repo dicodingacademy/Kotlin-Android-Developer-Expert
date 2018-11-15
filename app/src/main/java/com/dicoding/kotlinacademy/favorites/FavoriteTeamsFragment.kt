@@ -17,32 +17,35 @@ import org.jetbrains.anko.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.recyclerview.v7.recyclerView
-import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
 class FavoriteTeamsFragment : Fragment(), AnkoComponent<Context> {
     private var favorites: MutableList<Favorite> = mutableListOf()
     private lateinit var adapter: FavoriteTeamsAdapter
-    private lateinit var listEvent: RecyclerView
+    private lateinit var listTeam: RecyclerView
     private lateinit var swipeRefresh: SwipeRefreshLayout
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         adapter = FavoriteTeamsAdapter(favorites){
-            ctx.startActivity<TeamDetailActivity>("id" to "${it.teamId}")
+            context?.startActivity<TeamDetailActivity>("id" to "${it.teamId}")
         }
 
-        listEvent.adapter = adapter
-        showFavorite()
+        listTeam.adapter = adapter
         swipeRefresh.onRefresh {
-            favorites.clear()
             showFavorite()
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        showFavorite()
+    }
+
     private fun showFavorite(){
+        favorites.clear()
         context?.database?.use {
             swipeRefresh.isRefreshing = false
             val result = select(Favorite.TABLE_FAVORITE)
@@ -53,7 +56,7 @@ class FavoriteTeamsFragment : Fragment(), AnkoComponent<Context> {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return createView(AnkoContext.create(ctx))
+        return createView(AnkoContext.create(requireContext()))
     }
 
     override fun createView(ui: AnkoContext<Context>): View = with(ui){
@@ -69,7 +72,7 @@ class FavoriteTeamsFragment : Fragment(), AnkoComponent<Context> {
                         android.R.color.holo_orange_light,
                         android.R.color.holo_red_light)
 
-                listEvent = recyclerView {
+                listTeam = recyclerView {
                     lparams (width = matchParent, height = wrapContent)
                     layoutManager = LinearLayoutManager(ctx)
                 }

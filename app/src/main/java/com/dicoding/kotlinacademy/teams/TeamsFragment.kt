@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,10 +19,8 @@ import com.dicoding.kotlinacademy.model.Team
 import com.dicoding.kotlinacademy.util.invisible
 import com.dicoding.kotlinacademy.util.visible
 import com.google.gson.Gson
-import kotlinx.coroutines.experimental.runBlocking
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
-import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
@@ -34,7 +31,7 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
     private lateinit var presenter: TeamsPresenter
     private lateinit var adapter: TeamsAdapter
     private lateinit var spinner: Spinner
-    private lateinit var listEvent: RecyclerView
+    private lateinit var listTeam: RecyclerView
     private lateinit var progressBar: ProgressBar
     private lateinit var swipeRefresh: SwipeRefreshLayout
     private lateinit var leagueName: String
@@ -44,13 +41,13 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
 
 
         val spinnerItems = resources.getStringArray(league)
-        val spinnerAdapter = ArrayAdapter(ctx, android.R.layout.simple_spinner_dropdown_item, spinnerItems)
+        val spinnerAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, spinnerItems)
         spinner.adapter = spinnerAdapter
 
         adapter = TeamsAdapter(teams) {
-            ctx.startActivity<TeamDetailActivity>("id" to "${it.teamId}")
+            context?.startActivity<TeamDetailActivity>("id" to "${it.teamId}")
         }
-        listEvent.adapter = adapter
+        listTeam.adapter = adapter
 
         val request = ApiRepository()
         val gson = Gson()
@@ -70,7 +67,7 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return createView(AnkoContext.create(ctx))
+        return createView(AnkoContext.create(requireContext()))
     }
 
     override fun createView(ui: AnkoContext<Context>): View = with(ui){
@@ -93,8 +90,8 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
                 relativeLayout{
                     lparams (width = matchParent, height = wrapContent)
 
-                    listEvent = recyclerView {
-                        id = R.id.listEvent
+                    listTeam = recyclerView {
+                        id = R.id.list_team
                         lparams (width = matchParent, height = wrapContent)
                         layoutManager = LinearLayoutManager(ctx)
                     }

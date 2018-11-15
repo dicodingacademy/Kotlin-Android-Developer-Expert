@@ -193,9 +193,9 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
                         Favorite.TEAM_NAME to teams.teamName,
                         Favorite.TEAM_BADGE to teams.teamBadge)
             }
-            snackbar(swipeRefresh, "Added to favorite").show()
+            swipeRefresh.snackbar("Added to favorite").show()
         } catch (e: SQLiteConstraintException){
-            snackbar(swipeRefresh, e.localizedMessage).show()
+            swipeRefresh.snackbar(e.localizedMessage).show()
         }
     }
 
@@ -205,9 +205,9 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
                 delete(Favorite.TABLE_FAVORITE, "(TEAM_ID = {id})",
                         "id" to id)
             }
-            snackbar(swipeRefresh, "Removed to favorite").show()
+            swipeRefresh.snackbar("Removed to favorite").show()
         } catch (e: SQLiteConstraintException){
-            snackbar(swipeRefresh, e.localizedMessage).show()
+            swipeRefresh.snackbar(e.localizedMessage).show()
         }
     }
 

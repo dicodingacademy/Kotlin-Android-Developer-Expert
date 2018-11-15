@@ -1,9 +1,6 @@
 package com.dicoding.kotlinacademy.api
 
 import org.junit.Test
-
-import org.junit.Assert.*
-import org.mockito.Mockito
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 

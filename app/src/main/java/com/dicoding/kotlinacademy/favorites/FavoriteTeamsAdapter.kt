@@ -1,19 +1,16 @@
 package com.dicoding.kotlinacademy.favorites
 
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.dicoding.kotlinacademy.R
 import com.dicoding.kotlinacademy.R.id.team_badge
 import com.dicoding.kotlinacademy.R.id.team_name
 import com.dicoding.kotlinacademy.db.Favorite
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
-import org.jetbrains.anko.sdk25.coroutines.onClick
 
 /**
  * Created by root on 1/16/18.
@@ -69,6 +66,6 @@ class FavoriteViewHolder(view: View) : RecyclerView.ViewHolder(view){
     fun bindItem(favorite: Favorite, listener: (Favorite) -> Unit) {
         Picasso.get().load(favorite.teamBadge).into(teamBadge)
         teamName.text = favorite.teamName
-        itemView.onClick { listener(favorite) }
+        itemView.setOnClickListener { listener(favorite) }
     }
 }

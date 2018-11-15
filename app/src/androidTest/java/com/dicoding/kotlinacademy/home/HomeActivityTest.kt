@@ -24,10 +24,10 @@ class HomeActivityTest {
 
     @Test
     fun testRecyclerViewBehaviour() {
-        onView(withId(listEvent))
+        onView(withId(list_team))
                 .check(matches(isDisplayed()))
-        onView(withId(listEvent)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(10))
-        onView(withId(listEvent)).perform(
+        onView(withId(list_team)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(10))
+        onView(withId(list_team)).perform(
                 RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(10, click()))
     }
 

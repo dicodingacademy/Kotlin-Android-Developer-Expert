@@ -61,5 +61,4 @@ class TeamsPresenterTest {
            Mockito.verify(view).hideLoading()
        }
     }
-
 }

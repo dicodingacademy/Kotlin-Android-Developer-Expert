@@ -45,7 +45,7 @@ class TeamsPresenterTest {
         val league = "English Premiere League"
 
         runBlocking {
-            Mockito.`when`(apiRepository.doRequest(ArgumentMatchers.anyString()))
+            Mockito.`when`(apiRepository.doRequestAsync(ArgumentMatchers.anyString()))
                     .thenReturn(apiResponse)
             Mockito.`when`(apiResponse.await()).thenReturn("")
             Mockito.`when`(

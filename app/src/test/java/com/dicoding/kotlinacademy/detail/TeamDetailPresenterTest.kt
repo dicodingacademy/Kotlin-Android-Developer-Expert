@@ -45,7 +45,7 @@ class TeamDetailPresenterTest {
         val id = "1234"
 
         runBlocking {
-            Mockito.`when`(apiRepository.doRequest(ArgumentMatchers.anyString()))
+            Mockito.`when`(apiRepository.doRequestAsync(ArgumentMatchers.anyString()))
                     .thenReturn(apiResponse)
             Mockito.`when`(apiResponse.await()).thenReturn("")
             Mockito.`when`(

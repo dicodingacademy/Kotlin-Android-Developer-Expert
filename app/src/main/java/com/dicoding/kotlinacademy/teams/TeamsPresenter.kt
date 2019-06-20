@@ -17,7 +17,7 @@ class TeamsPresenter(private val view: TeamsView,
 
         GlobalScope.launch(Dispatchers.Main){
             val data = gson.fromJson(apiRepository
-                    .doRequest(TheSportDBApi.getTeams(league)).await(),
+                    .doRequestAsync(TheSportDBApi.getTeams(league)).await(),
                     TeamResponse::class.java
             )
             view.showTeamList(data.teams)

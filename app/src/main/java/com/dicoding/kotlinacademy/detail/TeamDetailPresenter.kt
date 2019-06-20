@@ -20,7 +20,7 @@ class TeamDetailPresenter(private val view: TeamDetailView,
 
         GlobalScope.launch(Dispatchers.Main){
             val data =gson.fromJson(apiRepository
-                    .doRequest(TheSportDBApi.getTeamDetail(teamId)).await(),
+                    .doRequestAsync(TheSportDBApi.getTeamDetail(teamId)).await(),
                     TeamResponse::class.java
             )
             view.showTeamDetail(data.teams)

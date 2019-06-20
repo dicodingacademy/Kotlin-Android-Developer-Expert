@@ -135,7 +135,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
                     .whereArgs("(TEAM_ID = {id})",
                             "id" to id)
             val favorite = result.parseList(classParser<Favorite>())
-            if (!favorite.isEmpty()) isFavorite = true
+            if (favorite.isNotEmpty()) isFavorite = true
         }
     }
 

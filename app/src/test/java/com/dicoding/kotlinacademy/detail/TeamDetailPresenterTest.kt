@@ -2,13 +2,10 @@ package com.dicoding.kotlinacademy.detail
 
 import com.dicoding.kotlinacademy.TestContextProvider
 import com.dicoding.kotlinacademy.api.ApiRepository
-import com.dicoding.kotlinacademy.api.TheSportDBApi
 import com.dicoding.kotlinacademy.model.Team
 import com.dicoding.kotlinacademy.model.TeamResponse
 import com.google.gson.Gson
 import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
@@ -48,7 +45,7 @@ class TeamDetailPresenterTest {
         val id = "1234"
 
         runBlocking {
-            Mockito.`when`(apiRepository.doRequest(ArgumentMatchers.anyString()))
+            Mockito.`when`(apiRepository.doRequestAsync(ArgumentMatchers.anyString()))
                     .thenReturn(apiResponse)
             Mockito.`when`(apiResponse.await()).thenReturn("")
             Mockito.`when`(

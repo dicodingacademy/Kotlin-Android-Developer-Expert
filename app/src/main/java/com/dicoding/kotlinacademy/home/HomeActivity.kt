@@ -1,6 +1,6 @@
 package com.dicoding.kotlinacademy.home
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.dicoding.kotlinacademy.R
 import com.dicoding.kotlinacademy.R.id.favorites
